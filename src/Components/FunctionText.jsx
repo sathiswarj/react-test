@@ -1,5 +1,7 @@
 import React from 'react';
 import Index from './Class';
+import Text from './Function/Context/Text';
+import Button from './Function/Context/Button';
 const FunctionText = ({ name, city }) => {
   const flag = true;
 
@@ -15,6 +17,8 @@ const functionTextBlock = flag ? <h4>Name is {name}, city is {city}</h4> : <h4>H
       {functionTextBlock}
       </div>
       <Index />
+      <Text />
+      <Button />
     </>
   );
 };
