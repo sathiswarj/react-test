@@ -1,23 +1,102 @@
 import FunctionText from './Components/FunctionText';
 import Index from './Components/Function/Index';
 import './App.css'
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import {BrowserRouter,useRoutes} from 'react-router-dom'
 import Fetch from './Components/Function/Fetch';
 import Reducer from './Components/Function/Reducer';
 import Todo from './Components/Todo/Todo';
 import FormIndex from './Components/Form/Form';
+import LoginIndex from './Components/Form-Controls/Login/LoginIndex'
+import RegisterIndex from './Components/Form-Controls/Register/RegisterIndex';
+import Comments from './Components/Custom-hooks/Comments/Comments';
+import Recipe from './Components/Custom-hooks/Recipe/Recipe';
+import RecipeDetails from './Components/Custom-hooks/Recipe/RecipeDetails';
+import Error from './Components/NotFound/Error404';
+import Layout from './Components/Page/Layout/Layout';
+
+function CustomRoutes() {
+  return useRoutes([
+    { 
+      path: "/", 
+      element: <FunctionText /> 
+    },
+    { 
+      path: "/index", 
+      element: <Index /> 
+    },
+    { 
+      path: "/fetch", 
+      element: <Fetch /> 
+    },
+    { 
+      path: "/todo",
+      element: <Todo /> 
+    },
+    { 
+      path: "/form", 
+      element: <FormIndex /> 
+    },
+    { 
+      path: "/login", 
+      element: <LoginIndex /> 
+    },
+    { 
+      path: "/register",
+      element: <RegisterIndex /> 
+    },
+    { 
+      path: "/reducer", 
+      element: <Reducer /> 
+    },
+    {
+      path: "/recipe",
+      element: <Layout />,
+      children: [
+        { path: "comments", 
+          element: <Comments /> 
+        },
+        { 
+          path: "recipe-list", 
+          element: <Recipe /> 
+        },
+        { 
+          path: "recipe-list/:id", 
+          element: <RecipeDetails /> 
+        }
+      ]
+    },
+    { 
+      path: "/*", 
+      element: <Error /> 
+    }
+  ]);
+}
+
+
 function App() {
   return (
   <BrowserRouter>
-   <Routes>
+   {/* <Routes>
       <Route path="/" element={<FunctionText />} />
       <Route path="/index" element={<Index />} />
       <Route path="/fetch" element={<Fetch />} />
       <Route path="/reducer" element={<Reducer />} />
       <Route path="/todo" element={<Todo />} />
       <Route path="/form" element={<FormIndex />} />
- 
-   </Routes>
+      <Route path="/login" element={<LoginIndex />} />
+      <Route path="/register" element={<RegisterIndex />} /> 
+     
+
+      <Route path="/recipe" element={<Layout />}>
+       <Route path="comments" element={<Comments />} />
+       <Route path="recipe-list" element={<Recipe />} /> 
+       <Route path="recipe/:id" element={<RecipeDetails />} /> 
+      </Route>
+      <Route path="/*" element={<Error />} /> 
+
+   </Routes> */}
+
+   <CustomRoutes />
   </BrowserRouter>
   );
 }
