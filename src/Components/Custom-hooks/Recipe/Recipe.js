@@ -3,7 +3,7 @@ import UseFetch from '../useFetch/UseFetch';
 import WindowResize from '../WindowResize';
 const Recipe = () => {
   
-  const { data, loading, error } = UseFetch('https://dummyjson.com/recipes');
+  const { data, loading } = UseFetch('https://dummyjson.com/recipes');
   const windowSize = WindowResize()
   console.log(data);
   if(loading) return <h2>Fetching recipes list Please wait</h2>

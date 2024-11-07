@@ -13,6 +13,11 @@ import Recipe from './Components/Custom-hooks/Recipe/Recipe';
 import RecipeDetails from './Components/Custom-hooks/Recipe/RecipeDetails';
 import Error from './Components/NotFound/Error404';
 import Layout from './Components/Page/Layout/Layout';
+import Forms from './Components/react-hook-form/Forms';
+import UseRefIndex from './Components/Page/Hooks/UseRefIndex.js';
+import UseMemo from './Components/Page/Hooks/UseMemo.js';
+import Callback from './Components/Page/Hooks/Calback.js'
+import ApiIndex from './Components/api/ApiIndex.js';
 
 function CustomRoutes() {
   return useRoutes([
@@ -68,7 +73,28 @@ function CustomRoutes() {
     { 
       path: "/*", 
       element: <Error /> 
+    },
+    { 
+      path: "/react-form", 
+      element: <Forms /> 
+    },
+    { 
+      path: "/hooks", 
+      element: <UseRefIndex /> 
+    },
+    { 
+      path: "/memo-hook", 
+      element: <UseMemo /> 
+    },
+    { 
+      path: "/callback", 
+      element: <Callback /> 
+    },
+    { 
+      path: "/api-index", 
+      element: <ApiIndex /> 
     }
+
   ]);
 }
 

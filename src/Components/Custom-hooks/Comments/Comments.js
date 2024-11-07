@@ -2,7 +2,7 @@ import React from 'react'
 import UseFetch from '../useFetch/UseFetch'
 
 const Comments = () => {
-  const { data, loading, error } =  UseFetch('https://dummyjson.com/comments')
+  const { data, loading } =  UseFetch('https://dummyjson.com/comments')
   console.log(data);
   if(loading) return <h2>Fetching comments list Please wait</h2>
   return (
