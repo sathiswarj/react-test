@@ -18,6 +18,10 @@ import UseRefIndex from './Components/Page/Hooks/UseRefIndex.js';
 import UseMemo from './Components/Page/Hooks/UseMemo.js';
 import Callback from './Components/Page/Hooks/Calback.js'
 import ApiIndex from './Components/api/ApiIndex.js';
+import ProductList from './Components/Product/ProductList/index.js';
+import ProductDetails from './Components/Product/ProductDetails/index.js'
+import CartList from './Components/Product/CartList/index.js'
+import ProductTile from './Components/Product/ProductTile/Index.js'
 
 function CustomRoutes() {
   return useRoutes([
@@ -93,6 +97,22 @@ function CustomRoutes() {
     { 
       path: "/api-index", 
       element: <ApiIndex /> 
+    },
+    { 
+      path: "/product-list", 
+      element: <ProductList /> 
+    },
+    { 
+      path: "/product-details/:id", 
+      element: <ProductDetails /> 
+    },
+    { 
+      path: "/cart-list", 
+      element: <CartList /> 
+    },
+    { 
+      path: "/product-tile", 
+      element: <ProductTile /> 
     }
 
   ]);

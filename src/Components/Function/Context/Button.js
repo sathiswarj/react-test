@@ -5,7 +5,7 @@ const Button = () => {
    const {handleChangeTheme} = useContext(GlobalContext)
   return (
     <>
-    <button onClick={ handleChangeTheme}>Click</button>
+    <button className="bg-black text-white font-bold" onClick={ handleChangeTheme}>Click</button>
     </>
   )
 }

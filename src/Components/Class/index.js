@@ -50,10 +50,10 @@ class index extends Component {
         return (
             <>
                 {this.state.showText ? <h4 style={{ color: this.state.changeColor ? "red" : "black" }}>Class component</h4> : null}
-                <button onClick={this.handleClick}>Toggle</button><br />
+                <button  className="bg-black text-white font-bold"  onClick={this.handleClick}>Toggle</button><br />
                 {this.state.count >= 10 ? <h4> Count reached 10</h4> : null}
                 {this.state.count} <br />
-                <button onClick={this.handleIncrement}>Increment</button>
+                <button  className="bg-black text-white font-bold"  onClick={this.handleIncrement}>Increment</button>
             </>
         )
     }
