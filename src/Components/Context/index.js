@@ -7,29 +7,39 @@ import { createContext, useEffect, useState } from "react";
 
 export const shopContext = createContext(null);
 
-function ShoppingCartProvider({ children }) {
+function ShoppingCartProvider({ children, productId }) {
     const [loading, setLoading] = useState(true);
-    const [listOfProducts, setListOfProducts] = useState([]);
+     const [listOfProducts, setListOfProducts] = useState([]);
+    const [productDetails, setProductDetails] = useState(null);
 
-    async function fetchProductList(){
-        const response = await fetch("https://dummyjson.com/products")
-        const result = await response.json()
-        console.log(result)
-         if(result && result?.products){
-            setListOfProducts(result?.products)
-            setLoading(false)
-         }
+    async function fetchProductList() {
+        try {
+            const response = await fetch("https://dummyjson.com/products");
+            const result = await response.json();
+            if (result?.products) {
+                setListOfProducts(result.products);
+                setLoading(false);
+            }
+        } catch (error) {
+            console.error("Error fetching product list:", error);
+        }
     }
 
-    useEffect(()=>{
-      fetchProductList()
-    },[])
+    useEffect(() => {
+        fetchProductList();
+    },[]);
+
     return (
-        <shopContext.Provider value={{listOfProducts, loading}}>
+        <shopContext.Provider value={{ 
+            listOfProducts, 
+            loading, 
+            productDetails,
+            setProductDetails,
+            setLoading 
+        }}>
             {children}
         </shopContext.Provider>
     );
 }
 
 export default ShoppingCartProvider;
-
