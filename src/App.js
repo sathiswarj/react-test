@@ -1,7 +1,7 @@
 import FunctionText from './Components/FunctionText';
 import Index from './Components/Function/Index';
 import './App.css'
-import {BrowserRouter,useRoutes} from 'react-router-dom'
+import {useRoutes} from 'react-router-dom'
 import Fetch from './Components/Function/Fetch';
 import Reducer from './Components/Function/Reducer';
 import Todo from './Components/Todo/Todo';
@@ -121,8 +121,8 @@ function CustomRoutes() {
 
 function App() {
   return (
-  <BrowserRouter>
-   {/* <Routes>
+    <>    {/*<BrowserRouter>
+  <Routes>
       <Route path="/" element={<FunctionText />} />
       <Route path="/index" element={<Index />} />
       <Route path="/fetch" element={<Fetch />} />
@@ -140,10 +140,13 @@ function App() {
       </Route>
       <Route path="/*" element={<Error />} /> 
 
-   </Routes> */}
+   </Routes> 
 
-   <CustomRoutes />
-  </BrowserRouter>
+   
+  </BrowserRouter> */}
+  <CustomRoutes />
+  </>
+
   );
 }
 

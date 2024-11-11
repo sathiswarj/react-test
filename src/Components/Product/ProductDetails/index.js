@@ -4,7 +4,7 @@ import { shopContext } from '../../Context';
 
 const Index = () => {
   const { id } = useParams();
-  const { productDetails, setProductDetails, loading, setLoading } = useContext(shopContext);
+  const { productDetails, setProductDetails, loading, setLoading, handleAddToCart, cartItem } = useContext(shopContext);
 
   async function fetchProductDetails(productId) {
     setLoading(true);
@@ -32,7 +32,7 @@ const Index = () => {
     <>
       {loading ? (
         <h1 className='text-center text-xl font-semibold'>Loading, please wait...</h1>
-      ) : (
+      ) : productDetails && (  
         <div className='p-6 lg:max-w-7xl mx-auto'>
           <div className='grid items-center grid-cols-1 lg:grid-cols-5 gap-12 shadow-sm p-6'>
 
@@ -58,7 +58,6 @@ const Index = () => {
               </div>
             </div>
 
-
             <div className='lg:col-span-2'>
               <h2 className='text-2xl font-extrabold text-[#333333]'>
                 {productDetails?.title}
@@ -67,12 +66,18 @@ const Index = () => {
                 <p className='text-xl font-bold'>${productDetails?.price}</p>
               </div>
               <div>
-                <button className='mt-5 min-w-[200px] px-4 py-3 border border-[#333] bg-transparent text-sm font-semibold rounded '>Add to cart</button>
+                <button
+                 className=' disabled:opacity-60 mt-5 min-w-[200px] px-4 py-3 border border-[#333] bg-transparent text-sm font-semibold rounded ' 
+                 disabled={cartItem.findIndex((item) => item.id === productDetails.id) > -1}
+                 onClick={() => handleAddToCart(productDetails)}
+                >
+                  {cartItem.findIndex((item) => item.id === productDetails.id) > -1 ? 'Added in cart' : 'Add to cart'}
+                </button>
               </div>
             </div>
           </div>
         </div>
-      )}
+      )  }
     </>
   );
 };
